@@ -14,7 +14,7 @@ func main() {
 	})
 	r.Get("/reference", func(w http.ResponseWriter, r *http.Request) {
 		htmlContent, err := scalar.ApiReferenceHTML(&scalar.Options{
-			SpecURL: "./docs/swagger.json", 
+			SpecURL: "./docs/openapi.json", 
 			CustomOptions: scalar.CustomOptions{
 				PageTitle: "Simple API",
 			},
@@ -24,7 +24,6 @@ func main() {
 		if err != nil {
 			fmt.Printf("%v", err)
 		}
-
 		fmt.Fprintln(w, htmlContent)
 	})
 	http.ListenAndServe(":8080", r)
